@@ -15,6 +15,7 @@
 * start nginx or apache2
 * copy this repo into /var/www/html
 * import dbin.sql into phpmyadmin
+* edit [ /connect/db.php ] with mysql connect creds
 
 # $Todo
  - add login / register 
