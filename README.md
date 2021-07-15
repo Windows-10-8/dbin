@@ -1,6 +1,6 @@
 # Doxbin.org
 
-<img src="https://i.imgur.com/tbMwxXN.png"></img>
+<img src="https://i.imgur.com/Iqb6faN.png"></img>
 
 # $Warnings
 * [ THIS IS NOT THE ORG SRC OF DOXBIN.ORG, PLEASE DON'T FALSE CLAIM AROUND SAYING U HACKED DOXBIN, THE OWNER OF DOXBIN IS AWARE OF THIS SRC. ]
@@ -18,15 +18,10 @@
 * edit [ /connect/db.php ] with mysql connect creds
 
 # $Todo
- - add login / register 
  - add hcpatcha on search/register/create_paste/login
- - fix token valdation
- - better error messages
  - add better empty functions
- - fix search LIKE statments
  - add admin panel 
  - add working comments and comment count
- - add view count back
 
 # $Credits
 * Nano - (main backend dev)
