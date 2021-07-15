@@ -18,15 +18,10 @@
 * edit [ /connect/db.php ] with mysql connect creds
 
 # $Todo
- - add login / register 
  - add hcpatcha on search/register/create_paste/login
- - fix token valdation
- - better error messages
  - add better empty functions
- - fix search LIKE statments
  - add admin panel 
  - add working comments and comment count
- - add view count back
 
 # $Credits
 * Nano - (main backend dev)
