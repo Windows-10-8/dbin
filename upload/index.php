@@ -42,7 +42,6 @@ session_start();
 </pre>
 </a>
 <?php 
-
 if(isset($_SESSION['token'])){
     if (empty($_SESSION['token'])){
         die(header("location: ../"));
@@ -50,8 +49,6 @@ if(isset($_SESSION['token'])){
 } else{
     die();
 }
-
-
 ?>
 
             <div class="options">  
@@ -69,6 +66,7 @@ if(isset($_SESSION['token'])){
                 <ul>
                     <li><input type="submit" id="create-paste" value="Create" data-bptrigger="1" class="button"></li>
                     <li><input type="reset" value="Clear" class="button"></li>
+                    <li><input type="button" value="Back" class="button" onclick="window.location = '../'"></li>
                 </ul>
             </div>
             <p>Please note that all posted information is publicly available and must follow our <a href="https://doxbin.org/tos" style="text-decoration: underline;">TOS.</a></p>

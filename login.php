@@ -1,13 +1,62 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <?php 
+    session_start();
+    include('connect/db.php');
+    if(isset($_POST) & !empty($_POST)){
+        // PHP Form Validations
+        if(empty($_POST['username'])){ $errors[]="Username / Email field required"; }
+        if(empty($_POST['password'])){ $errors[]="Password field is required"; }
+    
+        
+        
+     
+    
+        if(empty($errors)){
+            // Check the Login Credentials
+            $sql = "SELECT * FROM users WHERE ";
+            if(filter_var($_POST['username'], FILTER_VALIDATE_EMAIL)){
+                $sql .= "email=?";
+            }else{
+                $sql .= "username=?";
+            }
+            $result = $dbh->prepare($sql);
+            $result->execute(array($_POST['username']));
+            $count = $result->rowCount();
+            $res = $result->fetch(PDO::FETCH_ASSOC);
+            if($count == 1){
+                // Compare the password with password hash
+                if(password_verify($_POST['password'], $res['password'])){
+                    // regenerate session id
+                    session_regenerate_id();
+                    $_SESSION['login'] = true;
+                    $_SESSION['id'] = $res['id'];
+                    $_SESSION['username'] = $res['username'];
+                    $_SESSION['rank'] = $res['rank'];
+                    $_SESSION['last_login'] = time();
+    
+                    
+                    
+                    // redirect the user to members area/dashboard page
+                    
+                    header("location: index.php");
+    
+                }else{
+                    $errors[] = "Username / Email & Password Not working";
+                }
+            }else{
+                $errors[] = "Username / Email invalid";
+            }
+        }
+    }
+    ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="robots" content="noindex">
 	
     <title>Login - Doxbin</title>
-    <link rel="stylesheet" href="legacy/index.css">
+    <link rel="stylesheet" href="https://doxbin.org/legacy/index.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<style>
     .login-div{
@@ -67,7 +116,7 @@
 </head>
 
 <body>
-<input type="hidden" name="_token" value="1lVuYDLYgFLcGtKt8ZySxg4eUAAr45xIf0mmWYm6">
+<input type="hidden" name="_token" value="jpkoadHxng9jFWNOscu7Xg3c8btw3nkMQArmQ2mm">
     <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -77,21 +126,18 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="https://doxbin.org/">Doxbin</a>
+            <a class="navbar-brand" href="../">Doxbin Remake</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li ><a href="https://doxbin.org">Home</a></li>
-                <li><a href="https://doxbin.org/upload">Add Paste</a></li>
-                <li ><a href="https://doxbin.org/users">Users</a></li>
-                <li ><a href="https://doxbin.org/upgrade">Upgrade<p class="notif_count" style="display: none;margin-top: 4px; left:65px;height: 8px;top:8px;"></p></a></li>
-                <li ><a href="https://doxbin.org/hoa">Hall of Autism</a></li>
-                <li ><a href="https://doxbin.org/tos">TOS</a></li>
+                <li ><a href="../">Home</a></li>
+                <li><a href="../upload">Add Paste</a></li>
+                <li ><a href="../users.php">Users</a></li>
                             </ul>
             <div class="sidebar-right">
                                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="/login">Login</a></li>
-                        <li ><a href="/register">Register</a></li>
+                        <li class="active"><a href="login.php">Login</a></li>
+                        <li ><a href="register.php">Register</a></li>
                     </ul>
                             </div>
         </div>
@@ -109,12 +155,30 @@
             <div class="col-md-6 col-md-offset-3 text-center">
                 <p style="color: green;"></p>
                 <div class="login-div">
-                <form action="" method="POST" id="login-form">
-                <input type="hidden" name="_token" value="1lVuYDLYgFLcGtKt8ZySxg4eUAAr45xIf0mmWYm6">
+                <?php
+                
+                if(!empty($errors)){
+                    foreach ($errors as $error) {
+                        echo "<div id='error-msg' style='color: red; padding: 10px 0px 0px 0px; text-align: center; margin: 0;''>&nbsp;".htmlspecialchars($error)."</div>";
+                    }
+                    
+                }
+            ?>
+            <?php
+                if(!empty($messages)){
+                   
+                    foreach ($messages as $message) {
+                        echo "<div id='' style='color: green; padding: 10px 0px 0px 0px; text-align: center; margin: 0;''>&nbsp;".htmlspecialchars($message)."</div>";
+                    }
+                    
+                }
+            ?>
+                <form action="login.php" method="POST" id="login-form">
+                <input type="hidden" name="_token" value="<?php echo $_SESSION['token'] ?>">
                 <label for="username">Username</label><br>
-                <input name="username" id="username" type="text" placeholder="Username" autofocus><br>
+                <input type="text" name="username" placeholder="Username" aria-label="username" required="" autofocus><br>
                 <label for="username">Password</label><br>
-                <input id="password" type="password" placeholder="Password"><br>
+                <input type="password" name="password" placeholder="Password" aria-label="password" required="" autofocus><br>
                 <br>
                 
                 <input type="submit" value="Login">
@@ -127,45 +191,6 @@
     <script src="https://doxbin.org/legacy/jquery-ui-1.10.3.custom.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript">
-		function post(token) {
-            $.post('/login', {
-                username: $('#username').val(),
-                password: $('#password').val(),
-                _token: $('input[name=_token]').val(),
-                bpToken: token
-            }, function(resp){
-                if(resp.status == "err"){
-                    $('#error-msg').text(resp.msg);
-                }else{
-                    window.location = '/';
-                }
-            });
-        }
-
-        function sumbit() {
-            window.BotProtect.register({
-                publicKey: 'IW6Ln3zNuCWJK03FQshvS7WZBK620EjN',
-                callback: function(token) {
-                    if(token === 'request already in progress'){
-                        setTimeout(() => {
-                            sumbit();
-                        }, 500);
-                    } else {
-                        post(token);
-                    }
-                }
-            });
-        }
-
-        $('#login-form').on('submit', function(e){
-            console.log('BotProtect token request.');
-            e.preventDefault();
-            
-            sumbit();
-        });
-    </script>
-    <script type="text/javascript" src="https://v2.bytefend.com/libs.js" defer></script>
-    <script type="text/javascript" src="https://v2.bytefend.com/api.js" defer></script>
+    
 </body>
 </html>

@@ -497,7 +497,7 @@ div.page-content{
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="../index.php">Doxbin</a>
+            <a class="navbar-brand" href="../index.php">Doxbin Remake</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">

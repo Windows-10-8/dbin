@@ -4,7 +4,13 @@ include "../connect/db.php";
 function xss($data){
     htmlentities(strip_tags($data));
 }
-$_SESSION['username'] = "";
+if (isset($_SESSION['username'])){
+
+} else {
+    $_SESSION['username'] = "";
+}
+
+
 
 
 if (isset($_POST['_token'])){
@@ -32,13 +38,39 @@ if (isset($_POST['_token'])){
 
 if (isset($_POST['pasteTitle'])) {
     
-
     if (isset($_POST['pasteContent'])){
+
+        if(preg_match('/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\.\?\\\]/', $_POST['pasteTitle'])){
+            $_SESSION['error'] = "special characters not allowed!";
+            echo '<script>window.location = "index.php";</script>';
+            die();
+        }
+        if(stripos($_POST['pasteTitle'], '<') !== false) { 
+            $_SESSION['error'] = "special characters not allowed!";
+            echo '<script>window.location = "index.php";</script>';
+            die();
+        }
+        if(stripos($_POST['pasteTitle'], '>') !== false) { 
+            $_SESSION['error'] = "special characters not allowed!";
+            echo '<script>window.location = "index.php";</script>';
+            die();
+        }
+        if(stripos($_POST['pasteTitle'], 'alert') !== false) { 
+            $_SESSION['error'] = "special characters not allowed!";
+            echo '<script>window.location = "index.php";</script>';
+            die();
+        }
+        if(stripos($_POST['pasteTitle'], "'") !== false) { 
+            $_SESSION['error'] = "special characters not allowed!";
+            echo '<script>window.location = "index.php";</script>';
+            die();
+        }
         if (!strlen($_POST['pasteTitle'] > 0)){
             $_SESSION['error'] = "Title is empty!";
             echo '<script>window.location = "index.php";</script>';
             die();
         }
+        
         // check title string count
         //if (strlen($_POST['pasteTitle'] > 26)){
             //$_SESSION['error'] = "Title is too long!";
@@ -46,7 +78,7 @@ if (isset($_POST['pasteTitle'])) {
           //  die();
         //}
         // check paste string count 
-        if(strlen($_POST['pasteTitle'])>30) {
+        if(strlen($_POST['pasteTitle'])>50) {
             $_SESSION['error'] = "Title is too long!";
             echo '<script>window.location = "index.php";</script>';
             die();
@@ -75,10 +107,18 @@ if (isset($_POST['pasteTitle'])) {
             
             $doxname = preg_replace("/[^A-Za-z0-9_]+/","_", $tit2);
             $doxname = trim($doxname, '_');
+            $doxname = trim($doxname, '60');
+            $doxname = trim($doxname, '62');
+            $doxname = trim($doxname, '39');
+            $doxname = trim($doxname, '%27');
+            $doxname = trim($doxname, '%3C');
+            $doxname = trim($doxname, 'script');
+            $doxname = trim($doxname, '%3B');
+            
             $doxname = preg_replace('/[_]+/', '_', $doxname);
 
             if(file_exists("uploads/".$doxname.".txt")) {
-                $_SESSION['error'] = "that title already been taken!";
+                $_SESSION['error'] = "A paste with that title already exists.";
                 echo '<script>window.location = "index.php";</script>';
                die();
             }
@@ -92,15 +132,16 @@ if (isset($_POST['pasteTitle'])) {
             fwrite($fileName,$esy);
             fclose($fileName);
             chmod("uploads/".$doxname.".txt", 0644);
-            $id = rand(0,99999); // to prevent com kids having a big ego with there shitty uq IDs
+            $id = $dbh->lastInsertID(); // to prevent com kids having a big ego with there shitty uq IDs
             $sql = "INSERT INTO past (id, username, title, com) VALUES (:id, :username, :title, :com)"; 
             $result = $dbh->prepare($sql);
-                $values = array(':username'     => $_SESSION['username'],
+                $values = array(':username'     => $_SESSION['username']."-".rand(0,9999),
                                 ':title'        => strip_tags($doxname),
                                 ':com'     => $id,
                                 ':id'           => $id
                                 );
                 $res = $result->execute($values);
+           
          if ($res){
             // set value
             echo '<script>window.location = "../";</script>';

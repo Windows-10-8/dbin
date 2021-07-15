@@ -1,14 +1,18 @@
 <?php
 // Backend Made by Nano - Helpers Charge, cruel, StrikeGetsBeamed
+session_start();
 include("../connect/db.php");
 if (isset($_GET['id'])){
     if(!intval($_GET['id'])){
-        die();
+        die("<script>window.location = '../'; </script>");
     }
     $id = $_GET['id'];
     $stmt = $dbh->prepare("SELECT * FROM past WHERE id=:id");
     $stmt->execute(['id' => strip_tags($id)]);
-    $user = $stmt->fetch();   
+    $user = $stmt->fetch(); 
+    if(!$user){
+        die("<script>window.location = '../'; </script>");
+    }  
 }else {
     die(header("location: ../index.php"));
 }
@@ -104,12 +108,47 @@ if (isset($_GET['id'])){
                         
             
                         <p><b>Title:</b> <?php echo strip_tags($user['title']); ?></p>
-            <p><b>Created:</b> <?php echo strip_tags($user['username']); ?></p>
+                        <p><b>Created:</b><?php 
+                    $time = strtotime($user['add']); 
+                    if ($time) {
+                        $new_date = date('M-d-Y', $time);
+                    } 
+                    echo' '.$new_date;
+                    ?>
             
             <p><b>Created by:</b> 
-                        <a style=" font-weight: bold;" href="/user/<?php echo strip_tags($user['username']); ?>"><?php echo strip_tags($user['username']); ?></a>
+                    <?php 
+                    if (str_contains($user['username'], 'Anonymous')){
+                        echo '
+                        <a style=" font-weight: bold;" href="#">'.strip_tags($user["username"]).'</a>
+                        ';
+                    }
+                    else {
+                        
+                        
+                        echo '
+                        <a style=" font-weight: bold;" href="../user/'.strip_tags($user["username"]).'">'.$user["username"].'</a>
+                        ';
+                    }
+                    ?>
+                        
             
                         </p>
+                        <p><b>Views:</b> <?php 
+                            
+                        if (isset($_SERVER['REQUEST_URI'])){
+                            
+                            if ($_SERVER['REQUEST_URI']){
+                                
+                                $stmt = $dbh->prepare("UPDATE past SET `view` = view+1 WHERE `id` = :id");
+                                $stmt->execute(['id' => strip_tags($id)]);
+                                echo" ".$user['view'];
+
+                            }
+                            
+                        }
+
+                    ?></p>
             
                             <p><b>Comments:</b> <?php echo strip_tags($user['com']); ?></p>
                                 </div>
@@ -121,10 +160,19 @@ if (isset($_GET['id'])){
                 
             </ul>
         </div>
-        		<div class="options" id="cmntsctn">
-                        <ul>
-                        
-		                <input type="hidden" name="_token" value="v722vJ3VX0ONt2zZM0m9ktlxrTAasAMSlhZAnM67">
+        <div class="options" id="cmntsctn">
+                        <ul> <?php
+                        if (str_contains($user['username'], 'Anonymous')){
+		                echo'<p id="error-msg" style="color: red; padding: 0px; text-align: center; margin: 0;"></p> 
+                        <li><p style="width: 100%; color: #b7b7b7; margin: 0;"><b>Username:</b> - Anonymous <a class="cmt-name-link" href="../login">(Login)</a></p></li>';
+                        }
+                        else
+                        echo'<p id="error-msg" style="color: red; padding: 0px; text-align: center; margin: 0;"></p> 
+                        <li><p style="width: 100%; color: #b7b7b7; margin: 0;"><b>Username:</b> '.strip_tags($_SESSION["username"]).'</p></li>'
+                        ?>
+                        <li><textarea id="comment" placeholder="Your comment"></textarea></li>
+            <li><a class="button raw" id="create" style="cursor: pointer;">Submit Comment</a></li>
+		                <input type="hidden" name="_token" value="jpkoadHxng9jFWNOscu7Xg3c8btw3nkMQArmQ2mm">
             </ul>
 	            <div class="comment-container">
                 <div class="b-comments" id="paste-comments">
@@ -167,7 +215,7 @@ try {
         die();
     }
     
-    include("uploads/$uu.txt");
+    htmlspecialchars(include("uploads/$uu.txt"));
 } catch (Exception $e){
     echo "<h1>Issue</h1>";
     die();

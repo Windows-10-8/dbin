@@ -55,7 +55,15 @@ function xss($data){
 </head>
 
 <body>
+<?php 
+    $stmt = $dbh->prepare("SELECT * FROM past LIMIT 100");
+    $stmt->execute();
+    $fff = $stmt->fetchAll();
+    $countt = $stmt->rowCount();
+    $tok = md5(rand(0, 12));
+    $_SESSION['token'] = $tok; 
 
+?>
     <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -72,14 +80,77 @@ function xss($data){
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="/Doxbin-2.0/upload/index.php">Add Paste</a></li>
                 <li><a href="/Doxbin-2.0/users.php">Users</a></li>
-            
-                            </ul>
-            <div class="sidebar-right">
-                                    <ul class="nav navbar-nav">
-                        <li ><a href="Doxbin-2.0/login">Login</a></li>
-                        <li ><a href="register.php">Register</a></li>
-                    </ul>
+            </ul>
+                <div class="sidebar-right">
+                <?php
+                    if (isset($_SESSION['username'])){
+                        echo'</ul>
+                            <div class="dropdown r-hide">
+                                <p class="dropbtn">'.strip_tags($_SESSION['username']).'</p>
+                                                        <div class="dropdown-content">
+                                    <a href="https://doxbin.org/user/charge">Profile</a>
+                                    <a href="https://doxbin.org/user/charge/pastes">My Pastes</a>
+                                    <a href="https://doxbin.org/settings">Settings</a>
+                            
+                                    <a class="logout-btn" href="#">Logout</a>
+                                </div>
                             </div>
+                            <ul class="nav navbar-nav r-show">
+                                <li><a href="https://doxbin.org/user/charge">Profile</a></li>
+                                <li><a href="https://doxbin.org/user/charge/pastes">My Pastes</a></li>
+                                <li><a href="https://doxbin.org/settings">Settings</a></li>
+                                <li class="logout-btn"><a href="#">Logout</a></li>
+                            </ul>
+                                    </div>';
+                        
+                    }else {
+                        echo'<div class="sidebar-right">
+                                                    <ul class="nav navbar-nav">
+                                        <li ><a href="login.php">Login</a></li>
+                                        <li ><a href="register.php">Register</a></li>
+                                    </ul>
+                                            </div>';
+                    }   ?>
+                
+                                    
+                       
+                    
+                            </div>
+        </div>
+    </div>
+    
+  
+             <?php // WONT WORK UNTIL LOGIN IS MADE
+           //  $_SESSION['username'] = "";
+
+            // if (str_contains($e['username'], 'Anonymous')){
+            //                 echo'<div class="sidebar-right">
+            //                         <ul class="nav navbar-nav">
+            //             <li ><a href="login.php">Login</a></li>
+            //             <li ><a href="register.php">Register</a></li>
+            //         </ul>
+            //                 </div>';
+           //  }   
+            // else
+            // echo'</ul>
+            // <div class="dropdown r-hide">
+            //     <p class="dropbtn">'.strip_tags($user['username']).'</p>
+             //                            <div class="dropdown-content">
+             //        <a href="https://doxbin.org/user/charge">Profile</a>
+              //       <a href="https://doxbin.org/user/charge/pastes">My Pastes</a>
+              //       <a href="https://doxbin.org/settings">Settings</a>
+              //       <a class="logout-btn" href="#">Logout</a>
+              //   </div>
+            // </div>
+            // <ul class="nav navbar-nav r-show">
+             //    <li><a href="https://doxbin.org/user/charge">Profile</a></li>
+             //    <li><a href="https://doxbin.org/user/charge/pastes">My Pastes</a></li>
+              //   <li><a href="https://doxbin.org/settings">Settings</a></li>
+              //   <li class="logout-btn"><a href="#">Logout</a></li>
+            // </ul>
+              //       </div>'
+            ?>
+         
         </div>
     </div>
 </nav>
@@ -349,7 +420,7 @@ function xss($data){
                     <tr>
                         <th colspan="3">Title</th>
                         <th class="clickable text-center" id="commentsorder" style="width: 105px;">Comments </th>
-                        
+                        <th class="text-center">Views</th>
                         <th colspan="2" class="text-center">Created by</th>
                         <th class="clickable text-center r-hide" id="dateorder" style="width: 120px">Added </th>
 						                    </tr>
@@ -362,6 +433,7 @@ function xss($data){
                 
                 foreach($fff as $e){
                     $_SESSION['us'] = $e['username'];
+
                     if (str_contains($e['username'], 'Anonymous')) {
                         $_SESSION['us'] = "Anonymous";
                     }
@@ -369,10 +441,12 @@ function xss($data){
                     if ($time) {
                         $new_date = date('m-d-y', $time);
                     }
+                    $doxname = preg_replace('/[_]+/', ' ', strip_tags($e['title']));
                     echo '
                     <tr class="doxentry  " id="'.intval($e['id']).'">
-                    <td colspan="3" style="overflow: hidden; text-overflow: ellipsis;"><a title="'.strip_tags(htmlentities($e['title'])).'" href="upload/view.php?id='.strip_tags($e['id']).'">'.strip_tags($e['title']).'</a></td>
+                    <td colspan="3" style="overflow: hidden; text-overflow: ellipsis;"><a title="'.strip_tags(htmlentities($e['title'])).'" href="upload/view.php?id='.strip_tags($e['id']).'">'.$doxname.'</a></td>
                     <td style="width: 105px;" class="text-center">'.intval($e['com']).'</td>
+                    <td class="text-center">'.intval($e['view']).'</td>
                     
                     <td colspan="2" style="padding-bottom: 0; max-width: 140px;" class="text-center">
                     <a class="dox-username" title="'.xss($e['username']).'" style="color: #2a9fd6" href="/user/'.xss($e['username']).'">'.htmlentities($_SESSION['us']).'</a> 

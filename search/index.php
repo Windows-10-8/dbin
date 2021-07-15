@@ -344,12 +344,18 @@ if(isset($_POST['search-query'])){
         die();
     }
     
+
+
+    if(stripos($_POST['search-query'], '.') !== false) { $_SESSION['error'] = '<p style="color: red; padding: 0px 0px 10px 0px; text-align: center; margin: 0;">OOp Hi Haxor!</p>'; die("<script>window.location = '../'</script>"); }
+    if(stripos($_POST['search-query'], '/') !== false ) { $_SESSION['error'] = '<p style="color: red; padding: 0px 0px 10px 0px; text-align: center; margin: 0;">OOp Hi Haxor!</p>'; die("<script>window.location = '../'</script>"); }
+    if(stripos($_POST['search-query'], '%2f') !== false) { $_SESSION['error'] = '<p style="color: red; padding: 0px 0px 10px 0px; text-align: center; margin: 0;">Haxor try harder!</p>'; die("<script>window.location = '../'</script>"); }
+    if(stripos($_POST['search-query'], "'") !== false) { $_SESSION['error'] = '<p style="color: red; padding: 0px 0px 10px 0px; text-align: center; margin: 0;">Haxor try harder!</p>'; die("<script>window.location = '../'</script>"); }
     
     $search = filter_input(INPUT_POST, 'search-query', FILTER_SANITIZE_SPECIAL_CHARS);
 
-    $stmt = $dbh->prepare("SELECT * FROM past WHERE title=:tit AND title LIKE :tit ");
-    $stmt->execute(['tit' =>  urlencode(strip_tags($search))]);
-    $fff = $stmt->fetchAll();
+    $stmt = $dbh->prepare("SELECT * FROM past WHERE title LIKE ? ");
+    $stmt->execute(array('%'.strip_tags($search).'%'));
+    $fff = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $countt = $stmt->rowCount();
 
 
@@ -374,20 +380,26 @@ if(isset($_POST['search-query'])){
 							<th>Title</th>
 							<th class="text-center">Comments</th>
 							<th class="text-center">Created by</th>
-                            
+                            <th class="text-center">Views</th>
 							<th class="text-center">Added</th>
 													</tr>
 					</thead>
 
 
                         <?php
+                        
                         foreach($fff as $e){
+                            if (str_contains($e['username'], 'Anonymous')) {
+                                $_SESSION['us'] = "Anonymous";
+                            }
                             echo '
                             <tr class="doxentry  " id="83603">
 							<td><a href="../upload/view.php?id='.strip_tags($e['id']).'" target="_blank">'.htmlspecialchars($e['title']).'</a></td>
 							
 							<td class="text-center">'.htmlspecialchars($e['com']).'</td>
-							<td style="padding-bottom: 0; max-width: 140px;" class="text-center"> <a class="dox-username" title="'.htmlentities($e['username']).'" style="color: #2a9fd6;" href="/user/'.htmlentities($e['username']).'">'.htmlentities($e['username']).'</a> </td>
+                            
+							<td style="padding-bottom: 0; max-width: 140px;" class="text-center"> <a class="dox-username" title="'.htmlentities($e['username']).'" style="color: #2a9fd6;" href="/user/'.htmlentities($e['username']).'">'.htmlentities($_SESSION['us']).'</a> </td>
+                            <td class="text-center">'.intval($e['view']).'</td>
 							<td class="text-center">May 1st, 2021</td>
 													</tr>
                             
