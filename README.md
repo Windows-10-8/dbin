@@ -27,9 +27,9 @@
 
 # $Credits
 * Nano - (main backend dev)
-* Charge - (coolo html programmer)
+* Charge - (frontend)
 * StrikeGetsBeamed - (second backend dev)
-* Cruel - (coolo html programmer)
+* Cruel - (frontend)
 * Kt - (thanks for the css/js/html)
 
 
