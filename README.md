@@ -1,6 +1,6 @@
 # Doxbin.org
 
-<img src="https://i.imgur.com/tbMwxXN.png"></img>
+<img src="https://i.imgur.com/Iqb6faN.png"></img>
 
 # $Warnings
 * [ THIS IS NOT THE ORG SRC OF DOXBIN.ORG, PLEASE DON'T FALSE CLAIM AROUND SAYING U HACKED DOXBIN, THE OWNER OF DOXBIN IS AWARE OF THIS SRC. ]
