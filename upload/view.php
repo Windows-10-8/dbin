@@ -120,14 +120,14 @@ if (isset($_GET['id'])){
                     <?php 
                     if (str_contains($user['username'], 'Anonymous')){
                         echo '
-                        <a style=" font-weight: bold;" href="#">'.strip_tags($user["username"]).'</a>
+                        <a style=" font-weight: bold;" href="#">Anonymous</a>
                         ';
                     }
                     else {
                         
-                        
+                        $test = trim($user["username"], $user['num']);
                         echo '
-                        <a style=" font-weight: bold;" href="../user/'.strip_tags($user["username"]).'">'.$user["username"].'</a>
+                        <a style=" font-weight: bold;" href="../user/'.strip_tags($user["username"]).'">'.$test.'</a>
                         ';
                     }
                     ?>
@@ -164,11 +164,21 @@ if (isset($_GET['id'])){
                         <ul> <?php
                         if (str_contains($user['username'], 'Anonymous')){
 		                echo'<p id="error-msg" style="color: red; padding: 0px; text-align: center; margin: 0;"></p> 
-                        <li><p style="width: 100%; color: #b7b7b7; margin: 0;"><b>Username:</b> - Anonymous <a class="cmt-name-link" href="../login">(Login)</a></p></li>';
+                        <li><p style="width: 100%; color: #b7b7b7; margin: 0;"><b>Username:</b> - Anonymous <a class="cmt-name-link" href="../login.php">(Login)</a></p></li>';
                         }
                         else
-                        echo'<p id="error-msg" style="color: red; padding: 0px; text-align: center; margin: 0;"></p> 
-                        <li><p style="width: 100%; color: #b7b7b7; margin: 0;"><b>Username:</b> '.strip_tags($_SESSION["username"]).'</p></li>'
+                        if (isset($_SESSION['login'])){
+                            if ($_SESSION['login'] == TRUE){
+                                echo'<p id="error-msg" style="color: red; padding: 0px; text-align: center; margin: 0;"></p> 
+                            <li><p style="width: 100%; color: #b7b7b7; margin: 0;"><b>Username:</b> '.strip_tags($_SESSION["username"]).'</p></li>';
+                            }
+
+                        }
+                        else {
+                            echo'<p id="error-msg" style="color: red; padding: 0px; text-align: center; margin: 0;"></p> 
+                        <li><p style="width: 100%; color: #b7b7b7; margin: 0;"><b>Username:</b> - Anonymous <a class="cmt-name-link" href="../login.php">(Login)</a></p></li>';
+                        }
+                        
                         ?>
                         <li><textarea id="comment" placeholder="Your comment"></textarea></li>
             <li><a class="button raw" id="create" style="cursor: pointer;">Submit Comment</a></li>
@@ -212,6 +222,8 @@ try {
     $uu = $user['title'];
     if(!file_exists("uploads/".$uu.".txt")) {
         echo "<div style='height: 290px;'></div><center><h1 style='color:red;'>Something went wrong with this dox</h1>";
+        $stmt = $dbh->prepare("DELETE FROM past WHERE `id` = :id");
+        $stmt->execute(['id' => strip_tags($id)]);
         die();
     }
     

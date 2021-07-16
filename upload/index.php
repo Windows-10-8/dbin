@@ -7,6 +7,15 @@ function xss($data){
 }
 session_start();
 ?>
+<?php 
+if(isset($_SESSION['token'])){
+    if (empty($_SESSION['token'])){
+        die(header("location: ../"));
+    }
+} else{
+    die();
+}
+?>
 <html lang="en" style="" class=" js no-touch svg inlinesvg svgclippaths no-ie8compat"><head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,22 +50,18 @@ session_start();
  |____/ \___/_/\_\_.__/|_|_| |_|
 </pre>
 </a>
-<?php 
-if(isset($_SESSION['token'])){
-    if (empty($_SESSION['token'])){
-        die(header("location: ../"));
-    }
-} else{
-    die();
-}
-?>
+
 
             <div class="options">  
             <p style="color:red;" id="paste-error"><?php if(isset($_SESSION['error'])){ if(!empty($_SESSION['error'])) { foreach(array($_SESSION['error']) as $ee) { echo $_SESSION['error']; $_SESSION['error'] = ""; } } } ?></p>              
                 
                 
-                                <p style="text-align: center;"><a style="color: #2a9fd6;" target="_blank" href="/register">Create an account</a> to manage your pastes</p>
-
+            <?php
+            if (!isset($_SESSION['login'])){
+                echo '<p style="text-align: center;"><a style="color: #2a9fd6;" target="_blank" href="../register.php">Create an account</a> to manage your pastes</p>';  
+            } 
+            ?>
+                                
 <p style="color:red;text-align: center;font-size:15px;"><b>READ TOS BEFORE POSTING.</b><br> Any post that violates our TOS will be removed.</p>
                                 <h3>Title:</h3>
                 <input type="text" name="pasteTitle" id="paste-title" maxlength="70" value="">

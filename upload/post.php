@@ -56,7 +56,7 @@ if (isset($_POST['pasteTitle'])) {
             die();
         }
         if(stripos($_POST['pasteTitle'], 'alert') !== false) { 
-            $_SESSION['error'] = "special characters not allowed!";
+            $_SESSION['error'] = "title not allowed!";
             echo '<script>window.location = "index.php";</script>';
             die();
         }
@@ -65,11 +65,7 @@ if (isset($_POST['pasteTitle'])) {
             echo '<script>window.location = "index.php";</script>';
             die();
         }
-        if (!strlen($_POST['pasteTitle'] > 0)){
-            $_SESSION['error'] = "Title is empty!";
-            echo '<script>window.location = "index.php";</script>';
-            die();
-        }
+        
         
         // check title string count
         //if (strlen($_POST['pasteTitle'] > 26)){
@@ -83,22 +79,48 @@ if (isset($_POST['pasteTitle'])) {
             echo '<script>window.location = "index.php";</script>';
             die();
          }
-        if (!strlen($_POST['pasteContent'] > 10)){
-            $_SESSION['error'] = "Paste is not long enough";
+         
+
+
+         if(!strlen($_POST['pasteTitle']) > 3) {
+            $_SESSION['error'] = "Title is not long enough!";
             echo '<script>window.location = "index.php";</script>';
             die();
-        }
+         }
+         if(!strlen($_POST['pasteTitle']) > 14) {
+            $_SESSION['error'] = "Paste is not long enough!";
+            echo '<script>window.location = "index.php";</script>';
+            die();
+         }
         // check if empty TODO make function that checks nulls and 0 
-        if (!strlen($_POST['pasteContent'] > 0)){
+        if (strlen($_POST['pasteContent'] == 0)){
+            if (strlen($_POST['pasteTitle'] == 0)){
+                $_SESSION['error'] = "title is emtpy!";
+                echo '<script>window.location = "index.php";</script>';
+                die();
+            }
             $_SESSION['error'] = "Paste is emtpy!";
             echo '<script>window.location = "index.php";</script>';
             die();
+        }
+    
+        if (empty($_POST['pasteContent'])){
+            $_SESSION['error'] = "Paste is emtpy!";
+            echo '<script>window.location = "index.php";</script>';
+            die();
+        
+        }
+        if (empty($_POST['pasteTitle'])){
+            $_SESSION['error'] = "Paste is emtpy!";
+            echo '<script>window.location = "index.php";</script>';
+            die();
+        
         }
         
         $tit = xss($_POST['pasteTitle']);
         $tit2 = filter_input(INPUT_POST, 'pasteTitle', FILTER_SANITIZE_SPECIAL_CHARS);
         if(!$_SESSION['username']){
-            $_SESSION['username'] = "Anonymous-".rand(0,9999)."";
+            $_SESSION['username'] = "Anonymous";
         }
 
         // com is set to 0 since i'm to lazy to add the field LOL
@@ -112,7 +134,7 @@ if (isset($_POST['pasteTitle'])) {
             $doxname = trim($doxname, '39');
             $doxname = trim($doxname, '%27');
             $doxname = trim($doxname, '%3C');
-            $doxname = trim($doxname, 'script');
+            
             $doxname = trim($doxname, '%3B');
             
             $doxname = preg_replace('/[_]+/', '_', $doxname);
@@ -123,9 +145,10 @@ if (isset($_POST['pasteTitle'])) {
                die();
             }
 
-            $esy = preg_replace('/[^(\x0A\x0D\x20-\x7F)]+/', '?', $_POST['pasteContent']);
-    
-            $esy = strip_tags($esy); // gey
+            // remove ascii
+            //$esy = preg_replace('/[^(\x0A\x0D\x20-\x7F)]+/', '?', $_POST['pasteContent']);
+            
+            $esy = strip_tags($_POST['pasteContent']); // gey
 
             $fileName = fopen("uploads/".$doxname.".txt","w"); // done :3
 
@@ -133,19 +156,22 @@ if (isset($_POST['pasteTitle'])) {
             fclose($fileName);
             chmod("uploads/".$doxname.".txt", 0644);
             $id = $dbh->lastInsertID(); // to prevent com kids having a big ego with there shitty uq IDs
-            $sql = "INSERT INTO past (id, username, title, com) VALUES (:id, :username, :title, :com)"; 
+            $sql = "INSERT INTO past (id, username, title, com, num) VALUES (:id, :username, :title, :com, :num)"; 
+            $num = "-".md5(rand(0,9999))."-".md5(rand());
             $result = $dbh->prepare($sql);
-                $values = array(':username'     => $_SESSION['username']."-".rand(0,9999),
+                $values = array(':username'     => $_SESSION['username'].$num,
                                 ':title'        => strip_tags($doxname),
                                 ':com'     => $id,
-                                ':id'           => $id
+                                ':id'           => $id,
+                                ':num'      => $num
                                 );
                 $res = $result->execute($values);
+            
            
-         if ($res){
-            // set value
-            echo '<script>window.location = "../";</script>';
-        }
+                if ($res){
+                    // set value
+                    echo '<script>window.location = "../";</script>';
+                }
     }else {
         echo "kys";
         die();

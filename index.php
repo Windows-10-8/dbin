@@ -84,24 +84,38 @@ function xss($data){
                 <div class="sidebar-right">
                 <?php
                     if (isset($_SESSION['username'])){
-                        echo'</ul>
-                            <div class="dropdown r-hide">
-                                <p class="dropbtn">'.strip_tags($_SESSION['username']).'</p>
-                                                        <div class="dropdown-content">
-                                    <a href="https://doxbin.org/user/charge">Profile</a>
-                                    <a href="https://doxbin.org/user/charge/pastes">My Pastes</a>
-                                    <a href="https://doxbin.org/settings">Settings</a>
-                            
-                                    <a class="logout-btn" href="#">Logout</a>
+                        if (isset($_SESSION['login'])){
+                            if ($_SESSION['login'] == TRUE){
+                                echo'</ul>
+                                <div class="dropdown r-hide">
+                                    <p class="dropbtn">'.strip_tags($_SESSION['username']).'</p>
+                                                            <div class="dropdown-content">
+                                        <a href="https://doxbin.org/user/charge">Profile</a>
+                                        <a href="https://doxbin.org/user/charge/pastes">My Pastes</a>
+                                        <a href="https://doxbin.org/settings">Settings</a>
+                                
+                                        <a href="logout.php">Logout</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <ul class="nav navbar-nav r-show">
-                                <li><a href="https://doxbin.org/user/charge">Profile</a></li>
-                                <li><a href="https://doxbin.org/user/charge/pastes">My Pastes</a></li>
-                                <li><a href="https://doxbin.org/settings">Settings</a></li>
-                                <li class="logout-btn"><a href="#">Logout</a></li>
-                            </ul>
-                                    </div>';
+                                <ul class="nav navbar-nav r-show">
+                                    <li><a href="https://doxbin.org/user/charge">Profile</a></li>
+                                    <li><a href="https://doxbin.org/user/charge/pastes">My Pastes</a></li>
+                                    <li><a href="https://doxbin.org/settings">Settings</a></li>
+                                    <li class="logout-btn"><a href="logout.php">Logout</a></li>
+                                </ul>
+                                        </div>';
+    
+                            }
+                        } else {
+                            
+                                echo'<div class="sidebar-right">
+                                                            <ul class="nav navbar-nav">
+                                                <li ><a href="login.php">Login</a></li>
+                                                <li ><a href="register.php">Register</a></li>
+                                            </ul>
+                                                    </div>';
+                        }
+                        
                         
                     }else {
                         echo'<div class="sidebar-right">
@@ -432,7 +446,8 @@ function xss($data){
                 <?php
                 
                 foreach($fff as $e){
-                    $_SESSION['us'] = $e['username'];
+                    $test = trim($e['username'], $e['num']);
+                    $_SESSION['us'] = $test;
 
                     if (str_contains($e['username'], 'Anonymous')) {
                         $_SESSION['us'] = "Anonymous";
