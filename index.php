@@ -78,8 +78,9 @@ function xss($data){
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="/Doxbin-2.0/upload/index.php">Add Paste</a></li>
-                <li><a href="/Doxbin-2.0/users.php">Users</a></li>
+                <li><a href="/upload/index.php">Add Paste</a></li>
+                <li><a href="/hoa">Hall of Autism</a></li>
+                <li><a href="/users.php">Users</a></li>
             </ul>
                 <div class="sidebar-right">
                 <?php
@@ -90,17 +91,17 @@ function xss($data){
                                 <div class="dropdown r-hide">
                                     <p class="dropbtn">'.strip_tags($_SESSION['username']).'</p>
                                                             <div class="dropdown-content">
-                                        <a href="https://doxbin.org/user/charge">Profile</a>
-                                        <a href="https://doxbin.org/user/charge/pastes">My Pastes</a>
-                                        <a href="https://doxbin.org/settings">Settings</a>
+                                        <a href="/user/'.strip_tags($_SESSION['username']).'">Profile</a>
+                                        <a href="/user/'.strip_tags($_SESSION['username']).'/pastes">My Pastes</a>
+                                        <a href="/settings">Settings</a>
                                 
                                         <a href="logout.php">Logout</a>
                                     </div>
                                 </div>
                                 <ul class="nav navbar-nav r-show">
-                                    <li><a href="https://doxbin.org/user/charge">Profile</a></li>
-                                    <li><a href="https://doxbin.org/user/charge/pastes">My Pastes</a></li>
-                                    <li><a href="https://doxbin.org/settings">Settings</a></li>
+                                    <li><a href="/'.strip_tags($_SESSION['username']).'">Profile</a></li>
+                                    <li><a href="/user/'.strip_tags($_SESSION['username']).'/pastes">My Pastes</a></li>
+                                    <li><a href="/settings">Settings</a></li>
                                     <li class="logout-btn"><a href="logout.php">Logout</a></li>
                                 </ul>
                                         </div>';
@@ -488,4 +489,3 @@ function xss($data){
 	</div>
 </body>
 </html>
-    
