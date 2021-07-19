@@ -31,6 +31,7 @@
 * Charge - (frontend)
 * StrikeGetsBeamed - (second backend dev)
 * Cruel - (frontend)
+* 3UR - (github commits)
 * Kt - (thanks for the css/js/html)
 
 
