@@ -10,7 +10,7 @@
 * [ PLEASE DON'T SKID THIS SRC, FOR LEARNING PERP ONLY. BTW IF U SKID IT U WILL BE CLOWNED THERE IS WAYS WE CAN TELL IF U RIPPED IT. ]
 
 # $Reason
-* (Nano) - i came up with the idea since i really haven't seen any working remakes, accept skidbin but they just skidded from doxbin.
+* (Nano) - i came up with the idea since i really haven't seen any working remakes
 * (Nano) - thought this would be a coolo project to work on and inprove my php skills 
 
 # $setup
@@ -31,6 +31,7 @@
 * Charge - (frontend)
 * StrikeGetsBeamed - (second backend dev)
 * Cruel - (frontend)
+* 3UR - (github commits)
 * Kt - (thanks for the css/js/html)
 
 

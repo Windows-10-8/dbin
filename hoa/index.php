@@ -1,9 +1,10 @@
-<?php
-if (!isset($_SESSION)){
-
-    session_start();
+<?php 
+include "connect/db.php";
+session_start();
 }
+
 ?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -848,13 +849,13 @@ if (!isset($_SESSION)){
 
             <ul class="nav navbar-nav">
 
-                <li><a href="../index.php">Home</a></li>
+                <li><a href="/">Home</a></li>
 
-                <li><a href="../upload/index.php">Add Paste</a></li>
+                <li><a href="/upload/index.php">Add Paste</a></li>
 
-                <li class="active"><a href="#">Hall of Autism</a></li>
+                <li class="active"><a href="/hoa">Hall of Autism</a></li>
 
-                <li><a href="../users.php">Users</a></li>
+                <li><a href="/users.php">Users</a></li>
 
             </ul>
 
@@ -869,22 +870,39 @@ if (!isset($_SESSION)){
                             if ($_SESSION['login'] == TRUE){
 
                                 echo'</ul>
+
                                 <div class="dropdown r-hide">
-                                    <p class="dropbtn">'.strip_tags(htmlentities($_SESSION['username'])).'</p>
+
+                                    <p class="dropbtn">'.strip_tags($_SESSION['username']).'</p>
+
                                                             <div class="dropdown-content">
-                                        <a href="/user/'.strip_tags(htmlentities($_SESSION['username'])).'">Profile</a>
-                                        <a href="/user/'.strip_tags(htmlentities($_SESSION['username'])).'/pastes">My Pastes</a>
+
+                                        <a href="/user/'.strip_tags($_SESSION['username']).'">Profile</a>
+
+                                        <a href="/user/'.strip_tags($_SESSION['username']).'/pastes">My Pastes</a>
+
                                         <a href="/settings">Settings</a>
+
                                 
+
                                         <a href="/logout.php">Logout</a>
+
                                     </div>
+
                                 </div>
+
                                 <ul class="nav navbar-nav r-show">
-                                    <li><a href="/'.strip_tags(htmlentities($_SESSION['username'])).'">Profile</a></li>
-                                    <li><a href="/user/'.strip_tags(htmlentities($_SESSION['username'])).'/pastes">My Pastes</a></li>
+
+                                    <li><a href="/'.strip_tags($_SESSION['username']).'">Profile</a></li>
+
+                                    <li><a href="/user/'.strip_tags($_SESSION['username']).'/pastes">My Pastes</a></li>
+
                                     <li><a href="/settings">Settings</a></li>
+
                                     <li class="logout-btn"><a href="/logout.php">Logout</a></li>
+
                                 </ul>
+
                                         </div>';
 
     
@@ -896,10 +914,15 @@ if (!isset($_SESSION)){
                             
 
                                 echo'<div class="sidebar-right">
+
                                                             <ul class="nav navbar-nav">
+
                                                 <li ><a href="login.php">Login</a></li>
+
                                                 <li ><a href="register.php">Register</a></li>
+
                                             </ul>
+
                                                     </div>';
 
                         }
@@ -911,12 +934,21 @@ if (!isset($_SESSION)){
                     }else {
 
                         echo'<div class="sidebar-right">
+
                                                     <ul class="nav navbar-nav">
+
                                         <li ><a href="login.php">Login</a></li>
+
                                         <li ><a href="register.php">Register</a></li>
+
                                                                             </ul>
+
                                                                                                                 </ul>
+
+
+
                                     </ul>
+
                                             </div>';
 
                     }   ?>
@@ -1334,3 +1366,4 @@ His eyes bleed of insecurities and antisocialness.<br>
 </body>
 
 </html>
+

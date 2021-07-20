@@ -1,10 +1,7 @@
 <?php 
 include "connect/db.php";
 
-if (!isset($_SESSION)){
-
-    session_start();
-}
+session_start();
 
 function xss($data){
     htmlspecialchars(htmlentities($data));
@@ -17,7 +14,7 @@ function xss($data){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Doxbin is a document sharing and publishing website for text-based information such as dox, code-snippets and other stuff.">
-	    <title>Doxbin Remake</title>
+	    <title>Doxbin</title>
     <link rel="stylesheet" href="https://doxbin.org/legacy/index.css">
     <link rel="stylesheet" href="https://doxbin.org/legacy/css/main.css?r=44">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -81,9 +78,9 @@ function xss($data){
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="upload/index.php">Add Paste</a></li>
-                <li><a href="hoa/">Hall of Autism</a></li>
-                <li><a href="users.php">Users</a></li>
+                <li><a href="/upload/index.php">Add Paste</a></li>
+                <li><a href="/hoa">Hall of Autism</a></li>
+                <li><a href="/users.php">Users</a></li>
             </ul>
                 <div class="sidebar-right">
                 <?php
@@ -92,19 +89,19 @@ function xss($data){
                             if ($_SESSION['login'] == TRUE){
                                 echo'</ul>
                                 <div class="dropdown r-hide">
-                                    <p class="dropbtn">'.htmlentities(strip_tags($_SESSION['username'])).'</p>
+                                    <p class="dropbtn">'.strip_tags($_SESSION['username']).'</p>
                                                             <div class="dropdown-content">
-                                        <a href="https://doxbin.org/user/'.htmlentities(strip_tags($_SESSION['username'])).'">Profile</a>
-                                        <a href="https://doxbin.org/user/charge/'.htmlentities(strip_tags($_SESSION['username'])).'">My Pastes</a>
-                                        <a href="settings/">Settings</a>
+                                        <a href="/user/'.strip_tags($_SESSION['username']).'">Profile</a>
+                                        <a href="/user/'.strip_tags($_SESSION['username']).'/pastes">My Pastes</a>
+                                        <a href="/settings">Settings</a>
                                 
                                         <a href="logout.php">Logout</a>
                                     </div>
                                 </div>
                                 <ul class="nav navbar-nav r-show">
-                                    <li><a href="https://doxbin.org/user/'.htmlentities(strip_tags($_SESSION['username'])).'">Profile</a></li>
-                                    <li><a href="https://doxbin.org/user/'.htmlentities(strip_tags($_SESSION['username'])).'/pastes">My Pastes</a></li>
-                                    <li><a href="settings/">Settings</a></li>
+                                    <li><a href="/'.strip_tags($_SESSION['username']).'">Profile</a></li>
+                                    <li><a href="/user/'.strip_tags($_SESSION['username']).'/pastes">My Pastes</a></li>
+                                    <li><a href="/settings">Settings</a></li>
                                     <li class="logout-btn"><a href="logout.php">Logout</a></li>
                                 </ul>
                                         </div>';
@@ -136,6 +133,39 @@ function xss($data){
                             </div>
         </div>
     </div>
+    
+  
+             <?php // WONT WORK UNTIL LOGIN IS MADE
+           //  $_SESSION['username'] = "";
+
+            // if (str_contains($e['username'], 'Anonymous')){
+            //                 echo'<div class="sidebar-right">
+            //                         <ul class="nav navbar-nav">
+            //             <li ><a href="login.php">Login</a></li>
+            //             <li ><a href="register.php">Register</a></li>
+            //         </ul>
+            //                 </div>';
+           //  }   
+            // else
+            // echo'</ul>
+            // <div class="dropdown r-hide">
+            //     <p class="dropbtn">'.strip_tags($user['username']).'</p>
+             //                            <div class="dropdown-content">
+             //        <a href="https://doxbin.org/user/charge">Profile</a>
+              //       <a href="https://doxbin.org/user/charge/pastes">My Pastes</a>
+              //       <a href="https://doxbin.org/settings">Settings</a>
+              //       <a class="logout-btn" href="#">Logout</a>
+              //   </div>
+            // </div>
+            // <ul class="nav navbar-nav r-show">
+             //    <li><a href="https://doxbin.org/user/charge">Profile</a></li>
+             //    <li><a href="https://doxbin.org/user/charge/pastes">My Pastes</a></li>
+              //   <li><a href="https://doxbin.org/settings">Settings</a></li>
+              //   <li class="logout-btn"><a href="#">Logout</a></li>
+            // </ul>
+              //       </div>'
+            ?>
+         
         </div>
     </div>
 </nav>
@@ -270,7 +300,7 @@ function xss($data){
                     .@@@+     @@@:                @; @@`   :#@@@@@:               ,@`            @@               .@@@@@@'    @@` @                 @@@:    .@@@+                    
                      `@@@#   ,@@@                  @ ,@@      '@@@@@#.            :@`            @@             ;@@@@@+.     +@# :;                 @@@@   :@@@'                     
                        @@@@  #@@@                  ;  @@#       ,#@@@@@,          '@.            @@          `#@@@@@;       :@@  #                  #@@@  '@@@;                      
-                        @@@@`@@@#                   ;  @@#    nano     '@@@@@:        #@:            @@        .#@@@@#.  nano      :@@. .                   `@@@`#@@@.                       
+                        @@@@`@@@#                   ;  @@#         '@@@@@:        #@:            @@        .#@@@@#.        :@@. .                   `@@@`#@@@.                       
                          #@@@@@@.                    `  @@#          :#@@@@;      @@@            @@      ,@@@@@'          +@@:                       @@@@@@@`                        
                           ;@@@@@                         @@@:          .@@@@@'    @@@            @@    :@@@@@#          .#@@,                        @@@@@@                          
                            ,@@@@                          +@@@;`     ,+@@@@@@@@+  @@@           `@@  :@@@@@@@@#:`     :#@@@`                         @@@@+                           
@@ -395,7 +425,7 @@ function xss($data){
             <table class="table table-striped table-hover">
                 <tbody>
                                     
-                <script>console.log('2v // remade by nano ');</script>
+                <script>console.log('1v');</script>
 
 </tbody>
 </table>
@@ -430,12 +460,12 @@ function xss($data){
                     $doxname = preg_replace('/[_]+/', ' ', strip_tags($e['title']));
                     echo '
                     <tr class="doxentry  " id="'.intval($e['id']).'">
-                    <td colspan="3" style="overflow: hidden; text-overflow: ellipsis;"><a title="'.strip_tags(htmlentities($e['title'])).'" href="upload/view.php?id='.strip_tags($e['id']).'">'.htmlentities($doxname).'</a></td>
+                    <td colspan="3" style="overflow: hidden; text-overflow: ellipsis;"><a title="'.strip_tags(htmlentities($e['title'])).'" href="upload/view.php?id='.strip_tags($e['id']).'">'.$doxname.'</a></td>
                     <td style="width: 105px;" class="text-center">'.intval($e['com']).'</td>
                     <td class="text-center">'.intval($e['view']).'</td>
                     
                     <td colspan="2" style="padding-bottom: 0; max-width: 140px;" class="text-center">
-                    <a class="dox-username" title="'.htmlentities($e['username']).'" style="color: #2a9fd6" href="/user/'.htmlentities($e['username']).'">'.htmlentities($_SESSION['us']).'</a> 
+                    <a class="dox-username" title="'.xss($e['username']).'" style="color: #2a9fd6" href="/user/'.xss($e['username']).'">'.htmlentities($_SESSION['us']).'</a> 
                     </td>
                     <td style="width: 120px" class="text-center r-hide">'.$new_date.'</td>
                     </tr> 
@@ -459,4 +489,3 @@ function xss($data){
 	</div>
 </body>
 </html>
-    

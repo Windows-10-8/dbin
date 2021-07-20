@@ -1,24 +1,16 @@
-<?php
-if (!isset($_SESSION)){
+<?php 
+include "connect/db.php";
 
-    session_start();
-}
+session_start();
+
 function xss($data){
     htmlspecialchars(htmlentities($data));
 }
-if (isset($_SESSION['login'])){
-    if($_SESSION["login"] != true){ //checks if user is logged in if they arent redirect to login reccomended for pages like settings (:
-        echo 'User is not logged in';
-        header("Location: ../login.php");
-        exit;
-    }
-
-} else {
+if($_SESSION["login"] != true){ //checks if user is logged in if they arent redirect to login reccomended for pages like settings (:
     echo 'User is not logged in';
-    header("Location: ../login.php");
+    header("Location: /login.php");
     exit;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en" style="height: 100%;">
@@ -324,7 +316,7 @@ button:focus{
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="../index.php">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="/upload/index.php">Add Paste</a></li>
                 <li><a href="/hoa">Hall of Autism</a></li>
                 <li><a href="/users.php">Users</a></li>
@@ -336,20 +328,20 @@ button:focus{
                             if ($_SESSION['login'] == TRUE){
                                 echo'</ul>
                                 <div class="dropdown r-hide">
-                                    <p class="dropbtn">'.strip_tags(htmlentities($_SESSION['username'])).'</p>
+                                    <p class="dropbtn">'.strip_tags($_SESSION['username']).'</p>
                                                             <div class="dropdown-content">
-                                        <a href="../user/'.strip_tags(htmlentities($_SESSION['username'])).'">Profile</a>
-                                        <a href="../user/'.strip_tags(htmlentities($_SESSION['username'])).'/pastes">My Pastes</a>
-                                        <a href="#">Settings</a>
+                                        <a href="/user/'.strip_tags($_SESSION['username']).'">Profile</a>
+                                        <a href="/user/'.strip_tags($_SESSION['username']).'/pastes">My Pastes</a>
+                                        <a href="/settings">Settings</a>
                                 
-                                        <a href="../logout.php">Logout</a>
+                                        <a href="/logout.php">Logout</a>
                                     </div>
                                 </div>
                                 <ul class="nav navbar-nav r-show">
-                                    <li><a href="../user/'.strip_tags(htmlentities($_SESSION['username'])).'">Profile</a></li>
-                                    <li><a href="../user/'.strip_tags(htmlentities($_SESSION['username'])).'/pastes">My Pastes</a></li>
-                                    <li><a href="#">Settings</a></li>
-                                    <li class="logout-btn"><a href="../logout.php">Logout</a></li>
+                                    <li><a href="/'.strip_tags($_SESSION['username']).'">Profile</a></li>
+                                    <li><a href="/user/'.strip_tags($_SESSION['username']).'/pastes">My Pastes</a></li>
+                                    <li><a href="/settings">Settings</a></li>
+                                    <li class="logout-btn"><a href="/logout.php">Logout</a></li>
                                 </ul>
                                         </div>';
     
@@ -372,6 +364,7 @@ button:focus{
                                         <li ><a href="register.php">Register</a></li>
                                                                             </ul>
                                                                                                                 </ul>
+
                                     </ul>
                                             </div>';
                     }   ?>
@@ -410,22 +403,45 @@ button:focus{
             <div class="username-change">
                 <p><b>Username</b></p>
                                 <div class="help-tip"><p>Users with ranks can change their username - <a href="/upgrade">Upgrade</a></p></div>
-                                <input id="setting-username" type="text" value='<?php echo htmlentities(strip_tags($_SESSION['username'])); ?>' style="margin-bottom: 20px;" disabled>
+                                <input id="setting-username" type="text" value='<?php echo $_SESSION['username']; ?>' style="margin-bottom: 20px;" disabled>
             </div>
             <div class="username-change">
                 <p><b>Bio</b></p>
-                
+                <a id="change-bio" href="#">Edit</a>
                 <textarea id="setting-bio" style="margin-bottom: 20px; height: 70px" disabled>This feature is currently not working.</textarea>
             </div>
             <div class="username-change">
                 <p><b>Email</b></p>
-                
-                <input id="setting-email" type="text" value="<?php echo htmlentities(strip_tags($_SESSION['email']))?>" style="margin-bottom: 20px;" disabled>
+                <a id="change-email" href="#">Change</a>
+                <input id="setting-email" type="text" value="This feature is currently not working." style="margin-bottom: 20px;" disabled>
             </div>
 
+            <hr style="margin-bottom: 10px;">
             
+            <h5 style="font-size: 18px;">Username Color</h5>
+            <p style="margin-bottom: 10px;">Change the color of your name</p>
             
-            
+            <p><b>Choose one:</b></p>
+            <div class="colors">
+                            <div class="colors-locked"><span style="background-color: rgba(0, 0, 0, 0.8);display: inline-block;padding: 0 3px;">Purchase / preview at <a href="/upgrade">https://doxbin.org/upgrade</a></span></div>
+                                        <span id="BB71E4" class="color-block locked" type="radio" name="name-color" style="background-color: #BB71E4;"></span>
+                            <span id="4B2E83" class="color-block locked" type="radio" name="name-color" style="background-color: #4B2E83;"></span>
+                            <span id="FEC8D8" class="color-block locked" type="radio" name="name-color" style="background-color: #FEC8D8;"></span>
+                            <span id="BB1E64" class="color-block locked" type="radio" name="name-color" style="background-color: #BB1E64;"></span>
+                            <span id="FFFFFF" class="color-block locked" type="radio" name="name-color" style="background-color: #FFFFFF;"></span>
+                            <span id="365DDA" class="color-block locked" type="radio" name="name-color" style="background-color: #365DDA;"></span>
+                            <span id="F96D31" class="color-block locked" type="radio" name="name-color" style="background-color: #F96D31;"></span>
+                            <span id="FFFE71" class="color-block locked" type="radio" name="name-color" style="background-color: #FFFE71;"></span>
+                            <span id="B83C26" class="color-block locked" type="radio" name="name-color" style="background-color: #B83C26;"></span>
+                            <span id="C5C6D3" class="color-block locked" type="radio" name="name-color" style="background-color: #C5C6D3;"></span>
+                        </div>
+            <hr style="margin-bottom: 10px;">
+
+            <h5 style="font-size: 18px;">Two Factor Authentication</h5>
+
+              
+                        <p style="margin-bottom: 10px;">Requires a OTP generated through a phone app every time you login to make your account more secure</p>
+            <button class="b-button-green b-border-green" id="enable-2fa-btn">Enable 2FA</button>
         </div>
         </div>
 
