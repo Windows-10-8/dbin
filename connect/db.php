@@ -8,7 +8,7 @@ try {
 
 // instead of a raise error / leaking path will catch the error and handle it
 } catch (PDOException $e) {
-    echo "PDO Driver connection error";
+    echo "<h1>PDO Driver connection error</h1>";
     die();
 }
 ?>

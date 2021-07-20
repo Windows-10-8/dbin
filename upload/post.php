@@ -1,5 +1,13 @@
 <?php 
-session_start();
+
+// * post api made by nano * \\
+// *        ilysm           * \\
+
+if (!isset($_SESSION)){
+
+    session_start();
+}
+
 include "../connect/db.php";
 function xss($data){
     htmlentities(strip_tags($data));
@@ -12,7 +20,7 @@ if (isset($_SESSION['username'])){
 
 
 
-
+// totally the BEST token check EVER made :wink: 
 if (isset($_POST['_token'])){
     if(isset($_SESSION['token'])){
         if (empty($_POST['_token'])){
@@ -27,6 +35,7 @@ if (isset($_POST['_token'])){
         
         }
     } else{
+        echo '<script>window.location = "index.php";</script>';
         die();
     }
 
@@ -39,7 +48,7 @@ if (isset($_POST['_token'])){
 if (isset($_POST['pasteTitle'])) {
     
     if (isset($_POST['pasteContent'])){
-
+        // uwu pregmatch bypass me pwease 
         if(preg_match('/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\.\?\\\]/', $_POST['pasteTitle'])){
             $_SESSION['error'] = "special characters not allowed!";
             echo '<script>window.location = "index.php";</script>';
@@ -66,13 +75,7 @@ if (isset($_POST['pasteTitle'])) {
             die();
         }
         
-        
-        // check title string count
-        //if (strlen($_POST['pasteTitle'] > 26)){
-            //$_SESSION['error'] = "Title is too long!";
-            //echo '<script>window.location = "index.php";</script>';
-          //  die();
-        //}
+    
         // check paste string count 
         if(strlen($_POST['pasteTitle'])>50) {
             $_SESSION['error'] = "Title is too long!";
@@ -116,7 +119,7 @@ if (isset($_POST['pasteTitle'])) {
             die();
         
         }
-        
+        // LMFAO imma use a function for cleaning xss into data tables < : : : : :: im big brain totally 
         $tit = xss($_POST['pasteTitle']);
         $tit2 = filter_input(INPUT_POST, 'pasteTitle', FILTER_SANITIZE_SPECIAL_CHARS);
         if(!$_SESSION['username']){
@@ -125,9 +128,9 @@ if (isset($_POST['pasteTitle'])) {
 
         // com is set to 0 since i'm to lazy to add the field LOL
         
-            // haxor shit  trying to fix it
             
             $doxname = preg_replace("/[^A-Za-z0-9_]+/","_", $tit2);
+            // yas 
             $doxname = trim($doxname, '_');
             $doxname = trim($doxname, '60');
             $doxname = trim($doxname, '62');
@@ -147,8 +150,9 @@ if (isset($_POST['pasteTitle'])) {
 
             // remove ascii
             //$esy = preg_replace('/[^(\x0A\x0D\x20-\x7F)]+/', '?', $_POST['pasteContent']);
+            $esy = preg_replace('/</', '?', strip_tags($_POST['pasteContent']));
             
-            $esy = strip_tags($_POST['pasteContent']); // gey
+            
 
             $fileName = fopen("uploads/".$doxname.".txt","w"); // done :3
 
@@ -173,13 +177,17 @@ if (isset($_POST['pasteTitle'])) {
                     echo '<script>window.location = "../";</script>';
                 }
     }else {
-        echo "kys";
+        // .. balls in yo jaws 
+        echo "u are not supposed to be here > . <";
+        echo "<script>window.location = 'index.php'</script>";
         die();
     }
     
 
 } else {
-    echo "kys";
+    // .. balls in yo jaws 
+    echo "u are not supposed to be here > . <";
+    echo "<script>window.location = 'index.php'</script>";
     die();
 }
 ?>

@@ -3,7 +3,11 @@ include "../connect/db.php";
 function xss($data){
     htmlspecialchars(htmlentities($data));
 }
-session_start();
+if (!isset($_SESSION)){
+
+    session_start();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

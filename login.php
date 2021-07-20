@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <?php 
-    session_start();
+    if (!isset($_SESSION)){
+
+        session_start();
+    }
     include('connect/db.php');
     if(isset($_POST) & !empty($_POST)){
         // PHP Form Validations
@@ -33,6 +36,7 @@
                     $_SESSION['login'] = true;
                     $_SESSION['id'] = $res['id'];
                     $_SESSION['username'] = $res['username'];
+                    $_SESSION['email'] = $res['email'];
                     $_SESSION['rank'] = $res['rank'];
                     $_SESSION['last_login'] = time();
     
@@ -130,7 +134,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li ><a href="../">Home</a></li>
+                <li ><a href="./index.php">Home</a></li>
                 <li><a href="../upload">Add Paste</a></li>
                 <li ><a href="../users.php">Users</a></li>
                             </ul>

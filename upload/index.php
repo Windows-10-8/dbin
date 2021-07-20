@@ -5,7 +5,11 @@ include "../connect/db.php";
 function xss($data){
     htmlspecialchars(htmlentities($data));
 }
-session_start();
+if (!isset($_SESSION)){
+
+    session_start();
+}
+
 ?>
 <?php 
 if(isset($_SESSION['token'])){
@@ -13,7 +17,12 @@ if(isset($_SESSION['token'])){
         die(header("location: ../"));
     }
 } else{
-    die();
+    $_SESSION['error'] = "<a style='color:red;'>Invalid session token</a><br>";
+    echo "<script>window.location = '../' </script>";
+
+    die(json_encode(["error", "true", "Invalid session token"]));
+    
+    //die();
 }
 ?>
 <html lang="en" style="" class=" js no-touch svg inlinesvg svgclippaths no-ie8compat"><head>

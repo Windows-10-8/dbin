@@ -1,6 +1,9 @@
 <?php
 // Backend Made by Nano - Helpers Charge, cruel, StrikeGetsBeamed
-session_start();
+if (!isset($_SESSION)){
+
+    session_start();
+}
 include("../connect/db.php");
 if (isset($_GET['id'])){
     if(!intval($_GET['id'])){
@@ -13,6 +16,19 @@ if (isset($_GET['id'])){
     if(!$user){
         die("<script>window.location = '../'; </script>");
     }  
+
+    if(isset($_SESSION['token'])){
+        if (empty($_SESSION['token'])){
+            $_SESSION['error'] = "<a style='color:red;'>Invalid session token</a><br>";
+            
+            die(header("location: ../"));
+        }
+    } else{
+        $_SESSION['error'] = "<a style='color:red;'>Invalid session token</a><br>";
+        echo "<script>window.location = '../' </script>";
+        die(json_encode(["error", "true", "Invalid session token"]));
+    }
+    
 }else {
     die(header("location: ../index.php"));
 }
@@ -127,7 +143,7 @@ if (isset($_GET['id'])){
                         
                         $test = trim($user["username"], $user['num']);
                         echo '
-                        <a style=" font-weight: bold;" href="../user/'.strip_tags($user["username"]).'">'.$test.'</a>
+                        <a style=" font-weight: bold;" href="../user/'.htmlentities(strip_tags($user["username"])).'">'.htmlentities($test).'</a>
                         ';
                     }
                     ?>
@@ -142,7 +158,7 @@ if (isset($_GET['id'])){
                                 
                                 $stmt = $dbh->prepare("UPDATE past SET `view` = view+1 WHERE `id` = :id");
                                 $stmt->execute(['id' => strip_tags($id)]);
-                                echo" ".$user['view'];
+                                echo intval($user['view']);
 
                             }
                             
@@ -150,7 +166,7 @@ if (isset($_GET['id'])){
 
                     ?></p>
             
-                            <p><b>Comments:</b> <?php echo strip_tags($user['com']); ?></p>
+                            <p><b>Comments:</b> <?php echo strip_tags(htmlentities($user['com'])); ?></p>
                                 </div>
         
                                     <div class="options" id="btns">
@@ -170,7 +186,7 @@ if (isset($_GET['id'])){
                         if (isset($_SESSION['login'])){
                             if ($_SESSION['login'] == TRUE){
                                 echo'<p id="error-msg" style="color: red; padding: 0px; text-align: center; margin: 0;"></p> 
-                            <li><p style="width: 100%; color: #b7b7b7; margin: 0;"><b>Username:</b> '.strip_tags($_SESSION["username"]).'</p></li>';
+                            <li><p style="width: 100%; color: #b7b7b7; margin: 0;"><b>Username:</b> '.strip_tags(htmlentities($_SESSION["username"])).'</p></li>';
                             }
 
                         }
