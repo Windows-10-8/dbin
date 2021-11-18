@@ -16,16 +16,16 @@ if (!isset($_SESSION)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Doxbin is a document sharing and publishing website for text-based information such as dox, code-snippets and other stuff.">
 	    <title>Doxbin</title>
-    <link rel="stylesheet" href="https://doxbin.org/legacy/index.css">
-    <link rel="stylesheet" href="https://doxbin.org/legacy/css/main.css?r=44">
+    <link rel="stylesheet" href="https://doxbin.com/legacy/index.css">
+    <link rel="stylesheet" href="https://doxbin.com/legacy/css/main.css?r=44">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link href="https://doxbin.org/legacy/dropdown.css" rel="stylesheet">
-<link href="https://doxbin.org/files/doxbin.css" rel="stylesheet">
-<script src="https://doxbin.org/legacy/jquery.min.js"></script>
+<link href="https://doxbin.com/legacy/dropdown.css" rel="stylesheet">
+<link href="https://doxbin.com/files/doxbin.css" rel="stylesheet">
+<script src="https://doxbin.com/legacy/jquery.min.js"></script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://doxbin.org/legacy/logout.js"></script>    	
+<script src="https://doxbin.com/legacy/logout.js"></script>    	
     <script>
 
         var order = 'none';

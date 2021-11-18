@@ -13,18 +13,18 @@ include "../connect/db.php";
 	<meta name="description" content="Profile of skiverentiel">
 	
 	<meta property="og:locale" content="en_US">
-	<meta property="og:url" content="https://doxbin.org/user/skiverentiel">
+	<meta property="og:url" content="https://doxbin.com/user/skiverentiel">
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="skiverentiel's Profile - Doxbin">
 	<meta property="og:description" content="Profile of skiverentiel">
-    <link href="https://doxbin.org///netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="https://doxbin.com///netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link href="https://doxbin.org/legacy/dropdown.css" rel="stylesheet">
-<link href="https://doxbin.org/files/doxbin.css" rel="stylesheet">
-<script src="https://doxbin.org/legacy/jquery.min.js"></script>
+<link href="https://doxbin.com/legacy/dropdown.css" rel="stylesheet">
+<link href="https://doxbin.com/files/doxbin.css" rel="stylesheet">
+<script src="https://doxbin.com/legacy/jquery.min.js"></script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://doxbin.org/legacy/logout.js"></script>	
+<script src="https://doxbin.com/legacy/logout.js"></script>	
     <title>skiverentiel's Profile - Doxbin</title>
     <style>
     .info-cont{
@@ -180,7 +180,7 @@ include "../connect/db.php";
         }
     }
     </style>
-    <link rel="stylesheet" href="https://doxbin.org/legacy/index.css">
+    <link rel="stylesheet" href="https://doxbin.com/legacy/index.css">
     
 </head>
 
@@ -195,16 +195,16 @@ include "../connect/db.php";
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="https://doxbin.org/">Doxbin</a>
+            <a class="navbar-brand" href="https://doxbin.com/">Doxbin</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li ><a href="https://doxbin.org">Home</a></li>
-                <li><a href="https://doxbin.org/upload">Add Paste</a></li>
-                <li ><a href="https://doxbin.org/users">Users</a></li>
-                <li ><a href="https://doxbin.org/upgrade">Upgrade<p class="notif_count" style="display: none;margin-top: 4px; left:65px;height: 8px;top:8px;"></p></a></li>
-                <li ><a href="https://doxbin.org/hoa">Hall of Autism</a></li>
-                <li ><a href="https://doxbin.org/tos">TOS</a></li>
+                <li ><a href="https://doxbin.com">Home</a></li>
+                <li><a href="https://doxbin.com/upload">Add Paste</a></li>
+                <li ><a href="https://doxbin.com/users">Users</a></li>
+                <li ><a href="https://doxbin.com/upgrade">Upgrade<p class="notif_count" style="display: none;margin-top: 4px; left:65px;height: 8px;top:8px;"></p></a></li>
+                <li ><a href="https://doxbin.com/hoa">Hall of Autism</a></li>
+                <li ><a href="https://doxbin.com/tos">TOS</a></li>
                             </ul>
             <div class="sidebar-right">
                                     <ul class="nav navbar-nav">
@@ -263,12 +263,12 @@ include "../connect/db.php";
 
                             <tr class="doxentry" id="">
                             <td>
-                                                                <a href="https://doxbin.org/upload/view.php?id='.$l['id'].'" target="_blank">'.$l['title'].'</a>
+                                                                <a href="https://doxbin.com/upload/view.php?id='.$l['id'].'" target="_blank">'.$l['title'].'</a>
                             </td>
                             <td class="text-center">'.$l['com'].'</td>
                             <td class="text-center">'.$l['view'].'</td>
                             <td class="text-center">'.$l['add'].'</td>
-                            <td class="text-center"><a href="https://doxbin.org/upload/uploads/'.$l['title'].'.txt" target="_blank">RAW</a></td>
+                            <td class="text-center"><a href="https://doxbin.com/upload/uploads/'.$l['title'].'.txt" target="_blank">RAW</a></td>
                                                     </tr>   
                             
                             

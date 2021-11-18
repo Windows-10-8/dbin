@@ -18,16 +18,16 @@ function xss($data){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Doxbin is a document sharing and publishing website for text-based information such as dox, code-snippets and other stuff.">
 	    <title>Doxbin Remake</title>
-    <link rel="stylesheet" href="https://doxbin.org/legacy/index.css">
-    <link rel="stylesheet" href="https://doxbin.org/legacy/css/main.css?r=44">
+    <link rel="stylesheet" href="https://doxbin.com/legacy/index.css">
+    <link rel="stylesheet" href="https://doxbin.com/legacy/css/main.css?r=44">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link href="https://doxbin.org/legacy/dropdown.css" rel="stylesheet">
-<link href="https://doxbin.org/files/doxbin.css" rel="stylesheet">
-<script src="https://doxbin.org/legacy/jquery.min.js"></script>
+<link href="https://doxbin.com/legacy/dropdown.css" rel="stylesheet">
+<link href="https://doxbin.com/files/doxbin.css" rel="stylesheet">
+<script src="https://doxbin.com/legacy/jquery.min.js"></script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://doxbin.org/legacy/logout.js"></script>    	
+<script src="https://doxbin.com/legacy/logout.js"></script>    	
     <script>
 
         var order = 'none';
@@ -94,16 +94,16 @@ function xss($data){
                                 <div class="dropdown r-hide">
                                     <p class="dropbtn">'.htmlentities(strip_tags($_SESSION['username'])).'</p>
                                                             <div class="dropdown-content">
-                                        <a href="https://doxbin.org/user/'.htmlentities(strip_tags($_SESSION['username'])).'">Profile</a>
-                                        <a href="https://doxbin.org/user/charge/'.htmlentities(strip_tags($_SESSION['username'])).'">My Pastes</a>
+                                        <a href="https://doxbin.com/user/'.htmlentities(strip_tags($_SESSION['username'])).'">Profile</a>
+                                        <a href="https://doxbin.com/user/charge/'.htmlentities(strip_tags($_SESSION['username'])).'">My Pastes</a>
                                         <a href="settings/">Settings</a>
                                 
                                         <a href="logout.php">Logout</a>
                                     </div>
                                 </div>
                                 <ul class="nav navbar-nav r-show">
-                                    <li><a href="https://doxbin.org/user/'.htmlentities(strip_tags($_SESSION['username'])).'">Profile</a></li>
-                                    <li><a href="https://doxbin.org/user/'.htmlentities(strip_tags($_SESSION['username'])).'/pastes">My Pastes</a></li>
+                                    <li><a href="https://doxbin.com/user/'.htmlentities(strip_tags($_SESSION['username'])).'">Profile</a></li>
+                                    <li><a href="https://doxbin.com/user/'.htmlentities(strip_tags($_SESSION['username'])).'/pastes">My Pastes</a></li>
                                     <li><a href="settings/">Settings</a></li>
                                     <li class="logout-btn"><a href="logout.php">Logout</a></li>
                                 </ul>

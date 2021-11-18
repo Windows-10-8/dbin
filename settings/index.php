@@ -29,12 +29,12 @@ if (isset($_SESSION['login'])){
     <title>Settings - Doxbin</title>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link href="https://doxbin.org/legacy/dropdown.css" rel="stylesheet">
-<link href="https://doxbin.org/legacy/dropdown.css" rel="stylesheet">
-<script src="https://doxbin.org/legacy/jquery.min.js"></script>
+<link href="https://doxbin.com/legacy/dropdown.css" rel="stylesheet">
+<link href="https://doxbin.com/legacy/dropdown.css" rel="stylesheet">
+<script src="https://doxbin.com/legacy/jquery.min.js"></script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://doxbin.org/legacy/logout.js"></script>    <style>
+<script src="https://doxbin.com/legacy/logout.js"></script>    <style>
     .info-cont{
         font-size: 16px;
         color: #bfbfbf;
@@ -306,7 +306,7 @@ button:focus{
     color: white;
 }
     </style>
-    <link rel="stylesheet" href="https://doxbin.org/legacy/index.css">
+    <link rel="stylesheet" href="https://doxbin.com/legacy/index.css">
 </head>
 
 <body class="bin" style="height: 100%; margin: 0 auto;">
@@ -385,7 +385,7 @@ button:focus{
     </nav>
 
 
-<script src="https://doxbin.org/legacy/notifs.js"></script>
+<script src="https://doxbin.com/legacy/notifs.js"></script>
 <div id="notif">
     <div id="notif-modal-bg" class="notif-background">
     </div>

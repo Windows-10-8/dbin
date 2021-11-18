@@ -77,16 +77,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="https://doxbin.org/">Doxbin</a>
+            <a class="navbar-brand" href="https://doxbin.com/">Doxbin</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li ><a href="https://doxbin.org">Home</a></li>
-                <li><a href="https://doxbin.org/upload">Add Paste</a></li>
-                <li ><a href="https://doxbin.org/users">Users</a></li>
-                <li ><a href="https://doxbin.org/upgrade">Upgrade<p class="notif_count" style="display: none;margin-top: 4px; left:65px;height: 8px;top:8px;"></p></a></li>
-                <li ><a href="https://doxbin.org/hoa">Hall of Autism</a></li>
-                <li ><a href="https://doxbin.org/tos">TOS</a></li>
+                <li ><a href="https://doxbin.com">Home</a></li>
+                <li><a href="https://doxbin.com/upload">Add Paste</a></li>
+                <li ><a href="https://doxbin.com/users">Users</a></li>
+                <li ><a href="https://doxbin.com/upgrade">Upgrade<p class="notif_count" style="display: none;margin-top: 4px; left:65px;height: 8px;top:8px;"></p></a></li>
+                <li ><a href="https://doxbin.com/hoa">Hall of Autism</a></li>
+                <li ><a href="https://doxbin.com/tos">TOS</a></li>
                             </ul>
             <div class="sidebar-right">
                                     <ul class="nav navbar-nav">
@@ -123,8 +123,8 @@
             </div>
 		</div>
     </div>
-    <script src="https://doxbin.org/legacy/jquery.min.js"></script>
-    <script src="https://doxbin.org/legacy/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="https://doxbin.com/legacy/jquery.min.js"></script>
+    <script src="https://doxbin.com/legacy/jquery-ui-1.10.3.custom.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">

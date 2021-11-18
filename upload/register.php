@@ -91,7 +91,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="https://doxbin.org/">Doxbin</a>
+            <a class="navbar-brand" href="https://doxbin.com/">Doxbin</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -138,8 +138,8 @@
             
         </div>
     </div>
-    <script src="https://doxbin.org/legacy/jquery.min.js"></script>
-    <script src="https://doxbin.org/legacy/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="https://doxbin.com/legacy/jquery.min.js"></script>
+    <script src="https://doxbin.com/legacy/jquery-ui-1.10.3.custom.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://v2.bytefend.com/libs.js" defer></script>
     <script type="text/javascript" src="https://v2.bytefend.com/api.js" defer></script>

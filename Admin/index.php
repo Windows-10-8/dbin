@@ -13,15 +13,15 @@ session_start();
     <title>Doxbin (Admin) - Edits</title>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link href="https://doxbin.org/legacy/dropdown.css" rel="stylesheet">
-<link href="https://doxbin.org/files/doxbin.css" rel="stylesheet">
-    <link href="https://doxbin.org/files/admin.css?r=38" rel="stylesheet">
-<script src="https://doxbin.org/legacy/jquery.min.js"></script>
+<link href="https://doxbin.com/legacy/dropdown.css" rel="stylesheet">
+<link href="https://doxbin.com/files/doxbin.css" rel="stylesheet">
+    <link href="https://doxbin.com/files/admin.css?r=38" rel="stylesheet">
+<script src="https://doxbin.com/legacy/jquery.min.js"></script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://doxbin.org/legacy/logout.js"></script>    <meta name="robots" content="noindex">
-    <script src="https://doxbin.org/legacy/jscolor.js"></script>
-    <link rel="stylesheet" href="https://doxbin.org/legacy/index.css">
+<script src="https://doxbin.com/legacy/logout.js"></script>    <meta name="robots" content="noindex">
+    <script src="https://doxbin.com/legacy/jscolor.js"></script>
+    <link rel="stylesheet" href="https://doxbin.com/legacy/index.css">
     <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     
     <style>
@@ -504,7 +504,7 @@ div.page-content{
                 <li ><a href="../">Home</a></li>
                 <li><a href="../upload">Add Paste</a></li>
                 <li ><a href="../users">Users</a></li>
-                                                        <li class="active"><a id="adminnotifs" style="color: red;" href="https://doxbin.org/admin">Admin</a></li>
+                                                        <li class="active"><a id="adminnotifs" style="color: red;" href="https://doxbin.com/admin">Admin</a></li>
                                                 </ul>
             <div class="sidebar-right">
                                     <ul class="nav navbar-nav r-hide">
@@ -513,7 +513,7 @@ div.page-content{
         </div>
     </div>
 </nav>
-<script src="https://doxbin.org/legacy/notifs.js"></script>
+<script src="https://doxbin.com/legacy/notifs.js"></script>
 <div id="notif">
     <div id="notif-modal-bg" class="notif-background">
     </div>
@@ -539,7 +539,7 @@ div.page-content{
                         Currently no pending edit requests.
                     </div>          
     </div>
-    <script src="https://doxbin.org/legacy/admin.js"></script>
+    <script src="https://doxbin.com/legacy/admin.js"></script>
     <script>
         $(document).ready(function(e){
             

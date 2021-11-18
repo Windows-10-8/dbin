@@ -140,7 +140,7 @@ if(!isset($_SESSION))
 	<meta name="robots" content="noindex">
 	
     <title>Register - Doxbin</title>
-    <link rel="stylesheet" href="https://doxbin.org/legacy/index.css">
+    <link rel="stylesheet" href="https://doxbin.com/legacy/index.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<style>
     .register-div{
@@ -293,8 +293,8 @@ if(!isset($_SESSION))
             
         </div>
     </div>
-    <script src="https://doxbin.org/legacy/jquery.min.js"></script>
-    <script src="https://doxbin.org/legacy/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="https://doxbin.com/legacy/jquery.min.js"></script>
+    <script src="https://doxbin.com/legacy/jquery-ui-1.10.3.custom.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </body>

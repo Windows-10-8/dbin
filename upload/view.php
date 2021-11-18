@@ -46,13 +46,13 @@ if (isset($_GET['id'])){
     <meta name="description" content="<?php echo strip_tags($user['title']); ?> - Paste created by <?php echo strip_tags($user['username']); ?> on Feb 23rd, 2021">
 
     
-    <link rel="stylesheet" href="https://doxbin.org/legacy/app.css?r=2">
+    <link rel="stylesheet" href="https://doxbin.com/legacy/app.css?r=2">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <link href="https://doxbin.org/legacy/css/show.css" rel="stylesheet">
-    <link href="https://doxbin.org/legacy/google-code-prettify/tomorrow-night.css" rel="stylesheet">
-    <link href="https://doxbin.org/legacy/toastr/toastr.min.css" rel="stylesheet">
-    <script src="https://doxbin.org/legacy/custom.modernizr.js"></script>
-    <script src="https://doxbin.org/legacy/jquery.min.js"></script>
+    <link href="https://doxbin.com/legacy/css/show.css" rel="stylesheet">
+    <link href="https://doxbin.com/legacy/google-code-prettify/tomorrow-night.css" rel="stylesheet">
+    <link href="https://doxbin.com/legacy/toastr/toastr.min.css" rel="stylesheet">
+    <script src="https://doxbin.com/legacy/custom.modernizr.js"></script>
+    <script src="https://doxbin.com/legacy/jquery.min.js"></script>
     
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<style>
@@ -217,7 +217,7 @@ if (isset($_GET['id'])){
 			</div>
 			        </div>
                 <div class="options r-hide" id="tos-display">
-        <p style="margin-top: 0;color: white;">Please note that all posted information is publicly available and must follow our <a href="https://doxbin.org/tos" style="text-decoration: underline;">TOS.</a></p>
+        <p style="margin-top: 0;color: white;">Please note that all posted information is publicly available and must follow our <a href="https://doxbin.com/tos" style="text-decoration: underline;">TOS.</a></p>
         </div>
         
     </div>
@@ -254,14 +254,14 @@ try {
         </div>
     </div>
 	
-    <script src="https://doxbin.org/legacy/mousetrap.min.js"></script>
-    <script src="https://doxbin.org/legacy/google-code-prettify/prettify.js"></script>
-    <script src="https://doxbin.org/legacy/tabby.js"></script>
-    <script src="https://doxbin.org/legacy/zclip.min.js"></script>
-    <script src="https://doxbin.org/legacy/toastr/toastr.min.js"></script>
-    <script src="https://doxbin.org/legacy/bin.js"></script>
-    <script src="https://doxbin.org/legacy/logout.js"></script>
-    <script src="https://doxbin.org/legacy/paste.js"></script>
+    <script src="https://doxbin.com/legacy/mousetrap.min.js"></script>
+    <script src="https://doxbin.com/legacy/google-code-prettify/prettify.js"></script>
+    <script src="https://doxbin.com/legacy/tabby.js"></script>
+    <script src="https://doxbin.com/legacy/zclip.min.js"></script>
+    <script src="https://doxbin.com/legacy/toastr/toastr.min.js"></script>
+    <script src="https://doxbin.com/legacy/bin.js"></script>
+    <script src="https://doxbin.com/legacy/logout.js"></script>
+    <script src="https://doxbin.com/legacy/paste.js"></script>
         <script>
         var liked = 0;
         var disliked = 0;

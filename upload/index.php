@@ -33,12 +33,12 @@ if(isset($_SESSION['token'])){
     
     <title>Doxbin  - Create new paste</title>
 
-    <link rel="stylesheet" href="https://doxbin.org/legacy/app.css">
+    <link rel="stylesheet" href="https://doxbin.com/legacy/app.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     
-    <link href="https://doxbin.org/legacy/toastr/toastr.min.css" rel="stylesheet">
+    <link href="https://doxbin.com/legacy/toastr/toastr.min.css" rel="stylesheet">
 
-    <script src="https://doxbin.org/legacy/custom.modernizr.js"></script><script data-dapp-detection="">!function(){let e=!1;function n(){if(!e){const n=document.createElement("meta");n.name="dapp-detected",document.head.appendChild(n),e=!0}}if(window.hasOwnProperty("ethereum")){if(window.__disableDappDetectionInsertion=!0,void 0===window.ethereum)return;n()}else{var t=window.ethereum;Object.defineProperty(window,"ethereum",{configurable:!0,enumerable:!1,set:function(e){window.__disableDappDetectionInsertion||n(),t=e},get:function(){if(!window.__disableDappDetectionInsertion){const e=arguments.callee;e&&e.caller&&e.caller.toString&&-1!==e.caller.toString().indexOf("getOwnPropertyNames")||n()}return t}})}}();</script>
+    <script src="https://doxbin.com/legacy/custom.modernizr.js"></script><script data-dapp-detection="">!function(){let e=!1;function n(){if(!e){const n=document.createElement("meta");n.name="dapp-detected",document.head.appendChild(n),e=!0}}if(window.hasOwnProperty("ethereum")){if(window.__disableDappDetectionInsertion=!0,void 0===window.ethereum)return;n()}else{var t=window.ethereum;Object.defineProperty(window,"ethereum",{configurable:!0,enumerable:!1,set:function(e){window.__disableDappDetectionInsertion||n(),t=e},get:function(){if(!window.__disableDappDetectionInsertion){const e=arguments.callee;e&&e.caller&&e.caller.toString&&-1!==e.caller.toString().indexOf("getOwnPropertyNames")||n()}return t}})}}();</script>
 
     <meta name="dapp-detected"></head>
 <body class="bin" style="">
@@ -83,14 +83,14 @@ if(isset($_SESSION['token'])){
                     <li><input type="button" value="Back" class="button" onclick="window.location = '../'"></li>
                 </ul>
             </div>
-            <p>Please note that all posted information is publicly available and must follow our <a href="https://doxbin.org/tos" style="text-decoration: underline;">TOS.</a></p>
+            <p>Please note that all posted information is publicly available and must follow our <a href="https://doxbin.com/tos" style="text-decoration: underline;">TOS.</a></p>
         </div>
  <!--- IF LOGGED IN --->
         <div class="editor-container">
             <textarea name="pasteContent" id="paste-content" class="editor mousetrap" wrap="off"></textarea>
         </div>
     </form>
-    <script src="https://doxbin.org/legacy/jquery.min.js"></script>    
+    <script src="https://doxbin.com/legacy/jquery.min.js"></script>    
     <script type="text/javascript">
         $(document).ready(function(){ 
             $('#paste-form').on('submit', function(e){
@@ -120,14 +120,14 @@ if(isset($_SESSION['token'])){
         </div>
     </div>
     
-    <script src="https://doxbin.org/legacy/jquery.min.js"></script>
-    <script src="https://doxbin.org/legacy/jquery-ui-1.10.3.custom.min.js"></script>
-    <script src="https://doxbin.org/legacy/mousetrap.min.js"></script>
-    <script src="https://doxbin.org/legacy/tabby.js"></script>
-    <script src="https://doxbin.org/legacy/zclip.min.js"></script>
-    <script src="https://doxbin.org/legacy/toastr/toastr.min.js"></script>
-    <script src="https://doxbin.org/legacy/bin.js"></script>
-    <script src="https://doxbin.org/legacy/google-code-prettify/prettify.js"></script>
+    <script src="https://doxbin.com/legacy/jquery.min.js"></script>
+    <script src="https://doxbin.com/legacy/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="https://doxbin.com/legacy/mousetrap.min.js"></script>
+    <script src="https://doxbin.com/legacy/tabby.js"></script>
+    <script src="https://doxbin.com/legacy/zclip.min.js"></script>
+    <script src="https://doxbin.com/legacy/toastr/toastr.min.js"></script>
+    <script src="https://doxbin.com/legacy/bin.js"></script>
+    <script src="https://doxbin.com/legacy/google-code-prettify/prettify.js"></script>
 
 
 <iframe srcdoc="blank page" style="display: none;"></iframe></body></html>

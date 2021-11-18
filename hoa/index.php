@@ -28,9 +28,9 @@ if (!isset($_SESSION)){
 
     <title>Hall of Autism - Doxbin</title>
 
-    <link rel="stylesheet" href="https://doxbin.org/legacy/index.css">
+    <link rel="stylesheet" href="https://doxbin.com/legacy/index.css">
 
-    <link rel="stylesheet" href="https://doxbin.org/legacy/css/main.css?r=44">
+    <link rel="stylesheet" href="https://doxbin.com/legacy/css/main.css?r=44">
 
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
@@ -38,17 +38,17 @@ if (!isset($_SESSION)){
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<link href="https://doxbin.org/legacy/dropdown.css" rel="stylesheet">
+<link href="https://doxbin.com/legacy/dropdown.css" rel="stylesheet">
 
-<link href="https://doxbin.org/files/doxbin.css" rel="stylesheet">
+<link href="https://doxbin.com/files/doxbin.css" rel="stylesheet">
 
-<script src="https://doxbin.org/legacy/jquery.min.js"></script>
+<script src="https://doxbin.com/legacy/jquery.min.js"></script>
 
 
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<script src="https://doxbin.org/legacy/logout.js"></script>  
+<script src="https://doxbin.com/legacy/logout.js"></script>  
 
 	<style>
 
@@ -987,7 +987,7 @@ if (!isset($_SESSION)){
 
 					Got ran by ViLE and still tries denying his dox, even though there is countless proof of it being correct.<br><br>
 
-					<a href="https://doxbin.org/upload/Underpants22">Dox</a> | <a href="https://www.youtube.com/watch?v=PTdVdgK-7Hk">Video Evidence</a>
+					<a href="https://doxbin.com/upload/Underpants22">Dox</a> | <a href="https://www.youtube.com/watch?v=PTdVdgK-7Hk">Video Evidence</a>
 
 				</div>
 
@@ -1047,7 +1047,7 @@ Cried about his dox getting dropped & faked a video with his "lawyer".<br>
 
 His eyes bleed of insecurities and antisocialness.<br>
 
-<a href="https://doxbin.org/upload/Darkwizard662Smhabib2v2" target="_blank">View Dox</a>
+<a href="https://doxbin.com/upload/Darkwizard662Smhabib2v2" target="_blank">View Dox</a>
 
 				</div>
 
@@ -1073,9 +1073,9 @@ His eyes bleed of insecurities and antisocialness.<br>
 
 					Used Doxbin for over a year as a tool to harass with the intent to harm his fantasy dreamgirl.<br>
 
-					Also harassed Doxbin admins personally for months after getting owned by MKV (<a href="https://doxbin.org/upload/desmondsingh"target="_blank">Dox</a>)<br>
+					Also harassed Doxbin admins personally for months after getting owned by MKV (<a href="https://doxbin.com/upload/desmondsingh"target="_blank">Dox</a>)<br>
 
-					Arrested 4 days before Christmas - (<a href="https://www.justice.gov/usao-md/pr/new-york-man-arrested-federal-charges-maryland-cyberstalking-attempted-murder-hire-and" target="_blank">DOJ #1</a> | <a href="https://www.justice.gov/usao-md/pr/new-york-man-facing-federal-indictment-maryland-cyberstalking-and-aggravated-identity">DOJ #2</a> | <a href="https://doxbin.org/files/hoa/babloo/USA_vs_%20BABLOO_SINGH_Complaint_Affidavit.pdf">Affidavit</a>)<br>
+					Arrested 4 days before Christmas - (<a href="https://www.justice.gov/usao-md/pr/new-york-man-arrested-federal-charges-maryland-cyberstalking-attempted-murder-hire-and" target="_blank">DOJ #1</a> | <a href="https://www.justice.gov/usao-md/pr/new-york-man-facing-federal-indictment-maryland-cyberstalking-and-aggravated-identity">DOJ #2</a> | <a href="https://doxbin.com/files/hoa/babloo/USA_vs_%20BABLOO_SINGH_Complaint_Affidavit.pdf">Affidavit</a>)<br>
 
 					Will enjoy getting ass-raped by very large tattoo'd bald men.
 
@@ -1101,7 +1101,7 @@ His eyes bleed of insecurities and antisocialness.<br>
 
 					<b>Aaron Akhtar</b><br>
 
-					From Minecraft "hacker" prodigy, to owning a shit DDoS-for-hire service (Stressing.ninja | <a href="https://doxbin.org/upload/StressingninjaDatabase">DB Leak</a> | <a href="https://doxbin.org/upload/ThatDevAaronShprqness">Dox</a>) that is incapable of downing even the weakest home connection.<br>
+					From Minecraft "hacker" prodigy, to owning a shit DDoS-for-hire service (Stressing.ninja | <a href="https://doxbin.com/upload/StressingninjaDatabase">DB Leak</a> | <a href="https://doxbin.com/upload/ThatDevAaronShprqness">Dox</a>) that is incapable of downing even the weakest home connection.<br>
 
 					Well known for selling his own database for weed and McDonalds to fuel his autistic ventures with the most recent one, trying and subsequently failing to find Doxbin's backend, while flexing an old proxy IP on RaidForums.com.<br>
 
@@ -1205,7 +1205,7 @@ His eyes bleed of insecurities and antisocialness.<br>
 
 					Bad OPSEC<br><br>
 
-					<a href="https://doxbin.org/files/hoa/graham/twt_arrest_report.pdf">Arrest Report</a> | <a href="https://doxbin.org/files/hoa/kirk/kirk_court_video_2021_march16.mp4">2021 Court Sentencing</a>
+					<a href="https://doxbin.com/files/hoa/graham/twt_arrest_report.pdf">Arrest Report</a> | <a href="https://doxbin.com/files/hoa/kirk/kirk_court_video_2021_march16.mp4">2021 Court Sentencing</a>
 
 				</div>
 
@@ -1269,7 +1269,7 @@ His eyes bleed of insecurities and antisocialness.<br>
 
 					Used the same 2 password's everywhere.<br>
 
-					<a href="https://doxbin.org/files/hoa/zero/Apophis-Squad-INDICTMENT-2.pdf" target="_blank">Indictment - 2019</a>
+					<a href="https://doxbin.com/files/hoa/zero/Apophis-Squad-INDICTMENT-2.pdf" target="_blank">Indictment - 2019</a>
 
 				</div>
 
@@ -1321,7 +1321,7 @@ His eyes bleed of insecurities and antisocialness.<br>
 
 					Arrested for swatting w/ Google voice, claims to be apart of 'Atomwaffen' and looks like an overdeveloped white monkey.<br>
 
-					<a href="https://doxbin.org/files/hoa/gov.uscourts.vaed.464952.2.0.pdf" target="_blank">Case Summary - 2020</a>
+					<a href="https://doxbin.com/files/hoa/gov.uscourts.vaed.464952.2.0.pdf" target="_blank">Case Summary - 2020</a>
 
 				</div>
 
